@@ -1,0 +1,200 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    /* Terminal Colors */
+    --terminal-green: 120 100% 50%;
+    --terminal-amber: 40 100% 50%;
+    --terminal-black: 0 0% 5%;
+    --terminal-dark-gray: 0 0% 15%;
+
+    /* Theme - Dark Terminal Style */
+    --background: 0 0% 5%;
+    --foreground: 120 100% 50%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 120 100% 50%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 40 100% 50%;
+    --secondary-foreground: 0 0% 5%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 120 100% 45%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 120 100% 50%;
+
+    --radius: 0;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 120 100% 50%;
+    --sidebar-primary: 120 100% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 40 100% 50%;
+    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 120 100% 50%;
+  }
+
+  .dark {
+    /* Same as root for dark mode */
+    --terminal-green: 120 100% 50%;
+    --terminal-amber: 40 100% 50%;
+    --terminal-black: 0 0% 5%;
+    --terminal-dark-gray: 0 0% 15%;
+
+    --background: 0 0% 5%;
+    --foreground: 120 100% 50%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 120 100% 50%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 40 100% 50%;
+    --secondary-foreground: 0 0% 5%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 120 100% 45%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 120 100% 50%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 120 100% 50%;
+    --sidebar-primary: 120 100% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 40 100% 50%;
+    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 120 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply bg-background text-foreground;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    /* CRT scanlines effect */
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+    background-size: 100% 4px;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+  }
+
+  /* Terminal styles */
+  .terminal {
+    @apply font-terminal;
+  }
+
+  .terminal-glow {
+    @apply text-terminal-green;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  .terminal-amber-glow {
+    @apply text-terminal-amber;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  /* CRT monitor frame */
+  .crt-frame {
+    @apply border-8 border-terminal-darkGray rounded-lg shadow-2xl;
+    box-shadow:
+      inset 0 0 20px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(0, 0, 0, 0.8),
+      0 0 50px rgba(0, 0, 0, 0.5);
+    background: #0a0a0a;
+  }
+
+  /* Input field terminal style */
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    @apply bg-terminal-black text-terminal-green font-terminal border border-terminal-green/50 focus:border-terminal-green focus:outline-none;
+    caret-color: hsl(var(--terminal-green));
+  }
+
+  input[type="text"]::placeholder,
+  textarea::placeholder {
+    @apply text-terminal-green/40;
+  }
+
+  /* Button terminal style */
+  .btn-terminal {
+    @apply bg-terminal-green text-terminal-black font-bold px-6 py-3 rounded-none border-2 border-terminal-green uppercase tracking-wider transition-all duration-200;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-terminal:hover {
+    @apply bg-terminal-amber border-terminal-amber shadow-lg;
+    box-shadow: 0 0 20px hsl(var(--terminal-amber));
+  }
+
+  .btn-terminal:active {
+    @apply scale-95;
+  }
+
+  .btn-terminal:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}
