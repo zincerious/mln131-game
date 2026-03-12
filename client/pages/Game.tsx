@@ -254,7 +254,6 @@ const Game = () => {
           {/* Actions */}
           <div className="space-y-3">
             <button onClick={() => navigate("/")} className="btn-terminal w-full text-lg md:text-xl py-4">&gt; TRỞ VỀ TRANG CHỦ</button>
-            <button onClick={() => window.location.reload()} className="btn-terminal w-full text-lg md:text-xl py-4 border-terminal-amber">&gt; BẮT ĐẦU LẠI</button>
           </div>
         </div>
       </div>
