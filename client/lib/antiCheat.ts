@@ -27,8 +27,8 @@ const decodeFromBase64 = (str: string): string => {
 };
 
 export const PUZZLE_ANSWERS = {
-  puzzle1: encodeToBase64("KN-NT-CC-VR"),
-  puzzle2: encodeToBase64("QH|CP|TA"),
+  puzzle1: encodeToBase64("KN-NT-CC-VT"),
+  puzzle2: encodeToBase64("2|3|8"),
   puzzle3: encodeToBase64("kim chỉ nam"),
   puzzle4: encodeToBase64("TTCP3"),
 };

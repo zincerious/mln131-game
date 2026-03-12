@@ -20,12 +20,20 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
   const [isSolved, setIsSolved] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
 
+  const normalizeAnswer = (s: string) =>
+    s
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "")
+      .toUpperCase();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validateAnswer("puzzle4", input)) {
+    const normalized = normalizeAnswer(input || "");
+    if (normalized === "ND3PL") {
       setIsSolved(true);
-      onSolve(input);
+      onSolve("MASTER_UNLOCK");
     } else {
       setIsShaking(true);
       setAttempts(attempts + 1);
@@ -43,22 +51,20 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
       >
         <div className="text-center space-y-4">
           <KeyRound className="w-12 h-12 text-terminal-amber mx-auto animate-glow" />
-          <h3 className="text-2xl font-bold terminal-amber-glow">
-            MASTER KEY ACCEPTED
-          </h3>
-          <p className="text-terminal-green text-sm">
-            All security protocols have been bypassed.
-          </p>
+          <h3 className="text-2xl font-bold terminal-amber-glow">🎉 HỒ SƠ ĐÃ ĐƯỢC GIẢI</h3>
+          <p className="text-terminal-green text-sm">Bạn đã chứng minh rằng:</p>
         </div>
 
-        <div className="bg-terminal-black border border-terminal-amber/30 p-4 space-y-2">
-          <p className="text-terminal-amber font-mono text-center font-bold text-lg">
-            {input}
-          </p>
-          <p className="text-terminal-green text-xs text-center">
-            Code: Thủ tướng Chính phủ + 3 branches of power
-          </p>
+        <div className="bg-terminal-black border border-terminal-amber/30 p-4 space-y-2 text-terminal-green text-sm">
+          <ul className="list-disc ml-4 space-y-1">
+            <li>Quyền lực thuộc về <span className="text-terminal-amber font-bold">Nhân dân</span></li>
+            <li>Được thực hiện bởi <span className="text-terminal-amber font-bold">3</span> cơ quan chính (Lập pháp, Hành pháp, Tư pháp)</li>
+            <li>Toàn bộ hệ thống vận hành bằng <span className="text-terminal-amber font-bold">Pháp luật</span></li>
+          </ul>
+          <div className="text-terminal-amber font-mono text-center font-bold text-lg mt-3">ND3PL</div>
         </div>
+
+        
       </motion.div>
     );
   }
@@ -72,23 +78,18 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
       {/* Header */}
       <div className="text-center space-y-2">
         <Lock className="w-8 h-8 text-terminal-amber mx-auto animate-pulse" />
-        <h2 className="text-2xl font-bold terminal-amber-glow">THE MASTER KEY</h2>
-        <p className="text-terminal-amber/60 text-sm">
-          &gt; Puzzle 4: Slide 10 - Final Synthesis
-        </p>
+        <h2 className="text-2xl font-bold terminal-amber-glow">CHÌA KHÓA CHUNG</h2>
+        <p className="text-terminal-amber/60 text-sm">&gt; Bài 4: Slide 10 - Tổng hợp cuối</p>
       </div>
 
       {/* Critical Instructions */}
       <div className="bg-terminal-black border-2 border-terminal-amber p-4 rounded-none space-y-3 animate-pulse">
-        <p className="text-terminal-amber font-bold text-sm">
-          ⚠ FINAL AUTHENTICATION REQUIRED
-        </p>
-        <p className="text-terminal-green text-xs leading-relaxed">
-          Synthesize evidence from all previous puzzles. The master code combines:
-        </p>
+        <p className="text-terminal-amber font-bold text-sm">⚠ YÊU CẦU XÁC THỰC CUỐI</p>
+        <p className="text-terminal-green text-xs leading-relaxed">Tổng hợp các bằng chứng từ các bài trước. Mã tổng hợp gồm:</p>
         <ul className="text-terminal-green text-xs space-y-1 ml-4">
-          <li>• Abbreviation of the Prime Minister's position</li>
-          <li>• Number of government branches</li>
+          <li>• Chữ viết tắt của chủ thể quyền lực</li>
+          <li>• Số lượng cơ quan thực hiện quyền lực</li>
+          <li>• Từ khóa trung tâm của nguyên tắc quản lý</li>
         </ul>
       </div>
 
@@ -98,7 +99,7 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
           onClick={() => setShowAnalysis(!showAnalysis)}
           className="text-terminal-amber hover:text-terminal-green text-xs underline transition-colors w-full text-left"
         >
-          {showAnalysis ? "▼ HIDE EVIDENCE ANALYSIS" : "▶ REVIEW COLLECTED EVIDENCE"}
+          {showAnalysis ? "▼ ẨN PHÂN TÍCH BẰNG CHỨNG" : "▶ XEM LẠI BẰNG CHỨNG ĐÃ THU"}
         </button>
 
         {showAnalysis && (
@@ -109,38 +110,28 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
           >
             {evidence.puzzle1 && (
               <div className="text-xs space-y-1">
-                <p className="text-terminal-amber font-bold">
-                  ✓ Puzzle 1 - Core Principles:
-                </p>
+                <p className="text-terminal-amber font-bold">✓ Bài 1 - Nguyên tắc cốt lõi:</p>
                 <p className="text-terminal-green ml-4">{evidence.puzzle1}</p>
               </div>
             )}
 
             {evidence.puzzle2 && (
               <div className="text-xs space-y-1">
-                <p className="text-terminal-amber font-bold">
-                  ✓ Puzzle 2 - Power Structure:
-                </p>
-                <p className="text-terminal-green ml-4">
-                  {evidence.puzzle2} (3 branches)
-                </p>
+                <p className="text-terminal-amber font-bold">✓ Bài 2 - Cơ cấu quyền lực:</p>
+                <p className="text-terminal-green ml-4">{evidence.puzzle2} (3 cơ quan)</p>
               </div>
             )}
 
             {evidence.puzzle3 && (
               <div className="text-xs space-y-1">
-                <p className="text-terminal-amber font-bold">
-                  ✓ Puzzle 3 - Hidden Keyword:
-                </p>
+                <p className="text-terminal-amber font-bold">✓ Bài 3 - Từ khóa trung tâm:</p>
                 <p className="text-terminal-green ml-4">"{evidence.puzzle3}"</p>
               </div>
             )}
 
             <div className="border-t border-terminal-green/20 pt-3 text-terminal-amber text-xs">
-              <p className="font-bold mb-2">SYNTHESIS HINT:</p>
-              <p className="text-terminal-green">
-                The PM's abbreviation (TT) + position (CP) + number of branches (3)
-              </p>
+              <p className="font-bold mb-2">GỢI Ý TỔ HỢP (Viết tắt):</p>
+              <p className="text-terminal-green">Chủ thể + Số cơ quan + Nguyên tắc</p>
             </div>
           </motion.div>
         )}
@@ -149,14 +140,11 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
       {/* Input Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-terminal-amber text-xs font-bold mb-2">
-            &gt; ENTER THE MASTER KEY CODE:
-          </label>
+          <label className="block text-terminal-amber text-xs font-bold mb-2">&gt; NHẬP MÃ CHÌA KHÓA:</label>
           <input
             type="text"
             value={input}
-            onChange={(e) => setInput(e.target.value.toUpperCase())}
-            placeholder="TTCP3"
+            onChange={(e) => setInput(e.target.value)}
             className="w-full px-4 py-3 font-terminal text-base tracking-widest text-center"
             autoFocus
             disabled={isSolved}
@@ -170,7 +158,7 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
             animate={{ opacity: 1 }}
             className="text-terminal-amber text-sm font-bold animate-flicker text-center"
           >
-            ✗ INVALID MASTER KEY × {attempts}
+            ✗ MÃ KHÔNG HỢP LỆ × {attempts}
           </motion.p>
         )}
 
@@ -179,13 +167,11 @@ const Puzzle4MasterKey = ({ evidence, onSolve, onError }: Puzzle4Props) => {
           disabled={isSolved || input.length === 0}
           className="btn-terminal w-full text-base py-3 border-terminal-amber"
         >
-          &gt; AUTHENTICATE MASTER KEY
+          &gt; XÁC THỰC MÃ
         </button>
       </form>
 
-      <p className="text-center text-terminal-green/40 text-xs">
-        [Enter the synthesized code to complete the investigation]
-      </p>
+      <p className="text-center text-terminal-green/40 text-xs">[Nhập mã tổng hợp để hoàn tất điều tra]</p>
     </div>
   );
 };

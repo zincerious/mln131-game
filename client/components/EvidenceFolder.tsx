@@ -53,10 +53,8 @@ const EvidenceFolder = ({
         <div className="flex items-center gap-4">
           <Lock className="w-8 h-8 text-terminal-green" />
           <div>
-            <h2 className="text-xl font-bold terminal-glow">LOCKED - AWAITING PREVIOUS UNLOCK</h2>
-            <p className="text-sm terminal-glow text-opacity-60">
-              {folder.title}
-            </p>
+            <h2 className="text-xl font-bold terminal-glow">ĐÃ KHÓA - CHỜ MỞ TỪ BƯỚC TRƯỚC</h2>
+            <p className="text-sm terminal-glow text-opacity-60">{folder.title}</p>
           </div>
         </div>
       </div>
@@ -70,17 +68,13 @@ const EvidenceFolder = ({
           <Unlock className="w-8 h-8 text-terminal-amber flex-shrink-0 mt-1" />
           <div className="flex-1">
             <h2 className="text-xl font-bold terminal-amber-glow">{folder.title}</h2>
-            <p className="text-sm terminal-glow text-opacity-60">UNLOCKED</p>
+              <p className="text-sm terminal-glow text-opacity-60">ĐÃ MỞ</p>
           </div>
         </div>
 
         <div className="bg-terminal-black border border-terminal-green/30 p-4 md:p-6 rounded-none space-y-4">
-          <p className="terminal-glow text-sm md:text-base leading-relaxed whitespace-pre-wrap">
-            &gt; {folder.content}
-          </p>
-          <p className="text-terminal-amber text-xs font-bold opacity-70">
-            [FILE DECRYPTED]
-          </p>
+          <p className="terminal-glow text-sm md:text-base leading-relaxed whitespace-pre-wrap">&gt; {folder.content}</p>
+          <p className="text-terminal-amber text-xs font-bold opacity-70">[TỆP ĐÃ GIẢI MÃ]</p>
         </div>
       </div>
     );
@@ -96,19 +90,16 @@ const EvidenceFolder = ({
         <Lock className="w-8 h-8 text-terminal-green flex-shrink-0 mt-1 animate-pulse" />
         <div className="flex-1">
           <h2 className="text-xl font-bold terminal-glow">{folder.title}</h2>
-          <p className="text-sm terminal-glow text-opacity-60">Status: LOCKED</p>
+          <p className="text-sm terminal-glow text-opacity-60">Trạng thái: ĐÃ KHÓA</p>
         </div>
       </div>
 
       <div className="space-y-4">
         {/* Clue Section */}
         <div className="bg-terminal-black border border-terminal-green/30 p-4 rounded-none">
-          <button
-            onClick={() => setShowClue(!showClue)}
-            className="text-terminal-green hover:text-terminal-amber transition-colors flex items-center gap-2 mb-2"
-          >
+          <button onClick={() => setShowClue(!showClue)} className="text-terminal-green hover:text-terminal-amber transition-colors flex items-center gap-2 mb-2">
             <span className="text-lg">▶</span>
-            <span className="text-sm font-bold">REVIEW CLUE</span>
+            <span className="text-sm font-bold">XEM GỢI Ý</span>
           </button>
 
           {showClue && (
@@ -121,33 +112,21 @@ const EvidenceFolder = ({
         {/* Input Form */}
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
-            <label className="block text-terminal-green text-xs font-bold mb-2">
-              &gt; ENTER KEY TERM:
-            </label>
+            <label className="block text-terminal-green text-xs font-bold mb-2">&gt; NHẬP TỪ KHÓA:</label>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type the key term..."
+                placeholder="Nhập từ khoá..."
               className="w-full px-4 py-3 font-terminal text-base"
               autoFocus
               disabled={folder.unlocked}
             />
           </div>
 
-          {attempts > 0 && (
-            <p className="text-terminal-amber text-sm font-bold animate-flicker">
-              &gt; ACCESS DENIED × {attempts} | RETRY
-            </p>
-          )}
+          {attempts > 0 && (<p className="text-terminal-amber text-sm font-bold animate-flicker">&gt; TRUY CẬP BỊ TỪ CHỐI × {attempts} | THỬ LẠI</p>)}
 
-          <button
-            type="submit"
-            disabled={folder.unlocked}
-            className="btn-terminal w-full text-sm md:text-base py-3"
-          >
-            &gt; SUBMIT KEY
-          </button>
+          <button type="submit" disabled={folder.unlocked} className="btn-terminal w-full text-sm md:text-base py-3">&gt; GỬI TỪ KHÓA</button>
         </form>
       </div>
     </div>

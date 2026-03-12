@@ -29,29 +29,29 @@ const Game = () => {
   const puzzles = [
     {
       id: 1,
-      title: "The Sequence Lock",
-      subtitle: "Slides 1-3: Core Principles",
+      title: "Khóa trật tự",
+      subtitle: "Slide 1-3: Nguyên tắc cốt lõi",
       component: Puzzle1SequenceLock,
       key: "puzzle1" as const,
     },
     {
       id: 2,
-      title: "The Grid Decipher",
-      subtitle: "Slides 4-7: Power Structure",
+      title: "Giải mã lưới",
+      subtitle: "Slide 4-7: Cơ cấu quyền lực",
       component: Puzzle2GridDecipher,
       key: "puzzle2" as const,
     },
     {
       id: 3,
-      title: "Word Search",
-      subtitle: "Slides 8-9: Hidden Keywords",
+      title: "Khôi phục từ khóa",
+      subtitle: "Slide 8-9: Từ khóa bị ẩn",
       component: Puzzle3WordSearch,
       key: "puzzle3" as const,
     },
     {
       id: 4,
-      title: "The Master Key",
-      subtitle: "Slide 10: Final Synthesis",
+      title: "Chìa khóa chung",
+      subtitle: "Slide 10: Tổng hợp cuối",
       component: Puzzle4MasterKey,
       key: "puzzle4" as const,
     },
@@ -136,64 +136,43 @@ const Game = () => {
           <div className="space-y-6">
             {/* Header */}
             <div className="text-center space-y-4">
-              <h1 className="text-4xl md:text-6xl font-black terminal-glow tracking-widest">
-                CLASSIFIED
-              </h1>
+              <h1 className="text-4xl md:text-6xl font-black terminal-glow tracking-widest">HỒ SƠ BẢO MẬT</h1>
               <div className="h-1 bg-gradient-to-r from-terminal-green via-terminal-amber to-terminal-green mx-auto w-48"></div>
-              <h2 className="text-2xl md:text-4xl font-bold terminal-amber-glow">
-                CASE FILE DECODER
-              </h2>
-              <p className="text-lg md:text-xl terminal-glow text-opacity-80">
-                ESPIONAGE INVESTIGATION PROTOCOL
-              </p>
+              <h2 className="text-2xl md:text-4xl font-bold terminal-amber-glow">TRÌNH GIẢI MÃ HỒ SƠ</h2>
+              <p className="text-lg md:text-xl terminal-glow text-opacity-80">GIAO THỨC ĐIỀU TRA</p>
             </div>
 
             {/* Mission Briefing */}
             <div className="bg-terminal-black border-2 border-terminal-green/50 p-6 space-y-4">
-              <p className="terminal-glow text-sm md:text-base leading-relaxed">
-                &gt; OPERATIVE: You have been selected for a classified mission.
-              </p>
-              <p className="terminal-glow text-sm md:text-base leading-relaxed">
-                &gt; OBJECTIVE: Solve four interconnected puzzles using clues from the briefing.
-              </p>
-              <p className="terminal-glow text-sm md:text-base leading-relaxed">
-                &gt; CHALLENGE: Each puzzle unveils evidence for the final authentication.
-              </p>
-              <p className="terminal-glow text-sm md:text-base leading-relaxed">
-                &gt; WARNING: Failed attempts will reset security gates. Proceed with caution.
-              </p>
+              <p className="terminal-glow text-sm md:text-base leading-relaxed">&gt; NHÂN SỰ: Bạn được chọn tham gia nhiệm vụ bảo mật.</p>
+              <p className="terminal-glow text-sm md:text-base leading-relaxed">&gt; MỤC TIÊU: Giải bốn câu đố có liên kết dựa trên nội dung thuyết trình.</p>
+              <p className="terminal-glow text-sm md:text-base leading-relaxed">&gt; THỬ THÁCH: Mỗi câu đố tiết lộ một bằng chứng cho việc xác thực cuối cùng.</p>
+              <p className="terminal-glow text-sm md:text-base leading-relaxed">&gt; CẢNH BÁO: Thử sai sẽ đặt lại các cổng bảo mật. Hãy thận trọng.</p>
             </div>
 
             {/* Mission Briefing Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="bg-terminal-black border border-terminal-green/30 p-3">
-                <p className="text-terminal-amber font-bold mb-2">▸ PUZZLE 1</p>
-                <p className="text-terminal-green">Sequence Lock</p>
+                <p className="text-terminal-amber font-bold mb-2">▸ BÀI 1</p>
+                <p className="text-terminal-green">Khóa trật tự</p>
               </div>
               <div className="bg-terminal-black border border-terminal-green/30 p-3">
-                <p className="text-terminal-amber font-bold mb-2">▸ PUZZLE 2</p>
-                <p className="text-terminal-green">Grid Decipher</p>
+                <p className="text-terminal-amber font-bold mb-2">▸ BÀI 2</p>
+                <p className="text-terminal-green">Giải mã lưới</p>
               </div>
               <div className="bg-terminal-black border border-terminal-green/30 p-3">
-                <p className="text-terminal-amber font-bold mb-2">▸ PUZZLE 3</p>
-                <p className="text-terminal-green">Word Search</p>
+                <p className="text-terminal-amber font-bold mb-2">▸ BÀI 3</p>
+                <p className="text-terminal-green">Khôi phục từ khóa</p>
               </div>
               <div className="bg-terminal-black border border-terminal-green/30 p-3">
-                <p className="text-terminal-amber font-bold mb-2">▸ PUZZLE 4</p>
-                <p className="text-terminal-green">Master Key</p>
+                <p className="text-terminal-amber font-bold mb-2">▸ BÀI 4</p>
+                <p className="text-terminal-green">Chìa khóa chung</p>
               </div>
             </div>
 
-            <button
-              onClick={handleGameStart}
-              className="btn-terminal w-full text-lg md:text-xl py-4 font-bold tracking-wider"
-            >
-              ▶ INITIATE OPERATION
-            </button>
+            <button onClick={handleGameStart} className="btn-terminal w-full text-lg md:text-xl py-4 font-bold tracking-wider">▶ BẮT ĐẦU NHIỆM VỤ</button>
 
-            <p className="text-center terminal-glow text-xs text-opacity-60">
-              [CLEAR LEVEL 5 SECURITY AUTHENTICATION REQUIRED]
-            </p>
+            <p className="text-center terminal-glow text-xs text-opacity-60">[YÊU CẦU XÁC THỰC AN NINH CẤP 5]</p>
           </div>
         </div>
       </div>
@@ -207,25 +186,17 @@ const Game = () => {
         <div className="crt-frame w-full max-w-2xl p-8 md:p-12 space-y-8">
           {/* Trophy Animation */}
           <div className="text-center">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", delay: 0.2 }}
-            >
+            <motion.div initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", delay: 0.2 }}>
               <Trophy className="w-24 h-24 mx-auto text-terminal-amber animate-glow mb-4" />
             </motion.div>
-            <h1 className="text-4xl md:text-5xl font-black terminal-amber-glow tracking-wider">
-              MISSION COMPLETE
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-black terminal-amber-glow tracking-wider">NHIỆM VỤ HOÀN THÀNH</h1>
             <div className="h-1 bg-gradient-to-r from-terminal-green via-terminal-amber to-terminal-green mx-auto w-48 mt-4"></div>
           </div>
 
           {/* Completion Stats */}
           <div className="space-y-4 bg-terminal-black border-2 border-terminal-amber/50 p-6 md:p-8">
             <div className="text-center space-y-2">
-              <p className="text-terminal-amber text-sm font-bold">
-                &gt; OPERATION DURATION
-              </p>
+              <p className="text-terminal-amber text-sm font-bold">&gt; THỜI GIAN THỰC HIỆN</p>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -236,67 +207,55 @@ const Game = () => {
             </div>
 
             <div className="border-t border-terminal-amber/30 pt-6">
-              <p className="text-terminal-amber text-xs font-bold text-center mb-4">
-                &gt; EVIDENCE COLLECTED
-              </p>
+              <p className="text-terminal-amber text-xs font-bold text-center mb-4">&gt; BẰNG CHỨNG ĐÃ THU THẬP</p>
               <div className="space-y-3">
                 {evidence.puzzle1 && (
                   <div className="text-center">
-                    <p className="text-terminal-green text-xs">✓ Core Principles</p>
+                    <p className="text-terminal-green text-xs">✓ Nguyên tắc cốt lõi</p>
                     <p className="text-terminal-amber font-mono text-sm">{evidence.puzzle1}</p>
                   </div>
                 )}
                 {evidence.puzzle2 && (
                   <div className="text-center">
-                    <p className="text-terminal-green text-xs">✓ Power Structure</p>
+                    <p className="text-terminal-green text-xs">✓ Cơ cấu quyền lực</p>
                     <p className="text-terminal-amber font-mono text-sm">{evidence.puzzle2}</p>
                   </div>
                 )}
                 {evidence.puzzle3 && (
                   <div className="text-center">
-                    <p className="text-terminal-green text-xs">✓ Hidden Keyword</p>
+                    <p className="text-terminal-green text-xs">✓ Từ khóa trung tâm</p>
                     <p className="text-terminal-amber font-mono text-sm">"{evidence.puzzle3}"</p>
                   </div>
                 )}
                 {evidence.puzzle4 && (
                   <div className="text-center border-t border-terminal-amber/30 pt-3">
-                    <p className="text-terminal-amber text-xs font-bold">✓ MASTER KEY AUTHENTICATED</p>
+                    <p className="text-terminal-amber text-xs font-bold">✓ CHÌA KHÓA CHUNG ĐƯỢC XÁC THỰC</p>
                     <p className="text-terminal-green font-mono text-lg font-bold">{evidence.puzzle4}</p>
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Final oral question (master) - always visible on completion screen */}
+            <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-4 bg-terminal-black border border-terminal-green/20 p-4 max-h-56 overflow-auto text-terminal-green text-xs">
+              <h4 className="text-terminal-amber font-bold mb-2">Câu hỏi chính:</h4>
+              <div className="space-y-2 leading-relaxed">
+                <p>Theo các bạn, vì sao trong Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam việc quản lý xã hội phải dựa trên pháp luật?</p>
+              </div>
+            </motion.div>
           </div>
 
           {/* Recognition */}
           <div className="bg-terminal-black border-2 border-terminal-amber p-4 text-center space-y-2 animate-pulse">
-            <p className="text-terminal-amber font-bold">
-              ★ CLASSIFIED CLEARANCE GRANTED ★
-            </p>
-            <p className="text-terminal-green text-xs">
-              All four puzzles solved. Security protocols bypassed.
-            </p>
+            <p className="text-terminal-amber font-bold">★ CẤP PHÉP BẢO MẬT ĐÃ CẤP ★</p>
+            <p className="text-terminal-green text-xs">Tất cả bốn bài đã giải. Hãy giành quyền trả lời câu hỏi chính để đạt được phần thưởng</p>
           </div>
 
           {/* Actions */}
           <div className="space-y-3">
-            <button
-              onClick={() => navigate("/")}
-              className="btn-terminal w-full text-lg md:text-xl py-4"
-            >
-              &gt; RETURN TO BASE
-            </button>
-            <button
-              onClick={() => window.location.reload()}
-              className="btn-terminal w-full text-lg md:text-xl py-4 border-terminal-amber"
-            >
-              &gt; START NEW OPERATION
-            </button>
+            <button onClick={() => navigate("/")} className="btn-terminal w-full text-lg md:text-xl py-4">&gt; TRỞ VỀ TRANG CHỦ</button>
+            <button onClick={() => window.location.reload()} className="btn-terminal w-full text-lg md:text-xl py-4 border-terminal-amber">&gt; BẮT ĐẦU LẠI</button>
           </div>
-
-          <p className="text-center text-terminal-green text-xs text-opacity-60">
-            [CLASSIFIED INVESTIGATION COMPLETE]
-          </p>
         </div>
       </div>
     );
@@ -312,12 +271,8 @@ const Game = () => {
         {/* Header */}
         <div className="crt-frame p-6 md:p-8 space-y-4">
           <div className="text-center">
-            <h1 className="text-2xl md:text-4xl font-bold terminal-glow tracking-widest">
-              CASE FILE DECODER
-            </h1>
-            <p className="text-xs md:text-sm terminal-glow text-opacity-60 mt-2">
-              PUZZLE {currentPuzzle + 1} OF {puzzles.length}
-            </p>
+              <h1 className="text-2xl md:text-4xl font-bold terminal-glow tracking-widest">TRÌNH GIẢI MÃ HỒ SƠ</h1>
+              <p className="text-xs md:text-sm terminal-glow text-opacity-60 mt-2">BÀI {currentPuzzle + 1} / {puzzles.length}</p>
           </div>
         </div>
 
@@ -371,7 +326,7 @@ const Game = () => {
         {isGameComplete && !completionTime && (
           <div className="crt-frame p-8 text-center space-y-4">
             <Loader className="w-8 h-8 text-terminal-amber animate-spin mx-auto" />
-            <p className="text-terminal-glow">Finalizing investigation...</p>
+            <p className="text-terminal-glow">Đang hoàn tất điều tra...</p>
           </div>
         )}
       </div>

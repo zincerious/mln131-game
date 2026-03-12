@@ -41,13 +41,9 @@ const Puzzle1SequenceLock = ({ onSolve, onError }: Puzzle1Props) => {
         className="crt-frame p-8 border-terminal-green/70"
       >
         <div className="text-center space-y-4">
-          <Unlock className="w-12 h-12 text-terminal-amber mx-auto" />
-          <h3 className="text-xl font-bold terminal-amber-glow">
-            SEQUENCE LOCK DISENGAGED
-          </h3>
-          <p className="text-terminal-green text-sm">
-            Access granted. Core principles verified.
-          </p>
+            <Unlock className="w-12 h-12 text-terminal-amber mx-auto" />
+            <h3 className="text-xl font-bold terminal-amber-glow">KHÓA TRẬT TỰ ĐÃ MỞ</h3>
+            <p className="text-terminal-green text-sm">Truy cập được cấp. Nguyên tắc cốt lõi đã xác minh.</p>
         </div>
       </motion.div>
     );
@@ -62,20 +58,14 @@ const Puzzle1SequenceLock = ({ onSolve, onError }: Puzzle1Props) => {
       {/* Header */}
       <div className="text-center space-y-2">
         <Lock className="w-8 h-8 text-terminal-green mx-auto animate-pulse" />
-        <h2 className="text-2xl font-bold terminal-glow">THE SEQUENCE LOCK</h2>
-        <p className="text-terminal-green/60 text-sm">
-          &gt; Puzzle 1: Slides 1-3 - Core Principles
-        </p>
+        <h2 className="text-2xl font-bold terminal-glow">KHÓA TRẬT TỰ</h2>
+        <p className="text-terminal-green/60 text-sm">&gt; Bài 1: Slide 1-3 - Nguyên tắc cốt lõi</p>
       </div>
 
       {/* Instructions - Minimal Detail */}
       <div className="bg-terminal-black border border-terminal-green/30 p-4 rounded-none">
-        <p className="text-terminal-amber text-sm leading-relaxed">
-          &gt; Enter the four-element cipher key from the briefing materials.
-        </p>
-        <p className="text-terminal-green text-xs mt-2">
-          Each circle requires a two-character code. Order matters.
-        </p>
+        <p className="text-terminal-amber text-sm leading-relaxed">&gt; Nhập chuỗi mã gồm bốn phần theo nội dung bài thuyết trình.</p>
+        <p className="text-terminal-green text-xs mt-2">Mỗi vòng yêu cầu mã gồm 2 ký tự. Thứ tự các phần quan trọng.</p>
       </div>
 
       {/* Input Circles - No Labels to Prevent Answer Leaking */}
@@ -124,7 +114,7 @@ const Puzzle1SequenceLock = ({ onSolve, onError }: Puzzle1Props) => {
           animate={{ opacity: 1 }}
           className="text-center text-terminal-amber text-sm font-bold animate-flicker"
         >
-          ✗ INCORRECT SEQUENCE × {attempts}
+          ✗ TRẬT TỰ SAI × {attempts}
         </motion.p>
       )}
 
@@ -134,12 +124,10 @@ const Puzzle1SequenceLock = ({ onSolve, onError }: Puzzle1Props) => {
         disabled={isSolved || inputs.some((i) => i.length !== 2)}
         className="btn-terminal w-full text-base py-3"
       >
-        &gt; UNLOCK SEQUENCE
+        &gt; MỞ KHÓA
       </button>
 
-      <p className="text-center text-terminal-green/40 text-xs">
-        [Enter all four codes to proceed]
-      </p>
+      <p className="text-center text-terminal-green/40 text-xs">[Nhập đủ bốn mã để tiếp tục]</p>
     </div>
   );
 };

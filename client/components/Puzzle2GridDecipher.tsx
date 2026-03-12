@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { validateAnswer } from "@/lib/antiCheat";
-import { Lock, Unlock, Building2, Users, Scale, ShieldAlert } from "lucide-react";
+import { Lock, Unlock } from "lucide-react";
 
 interface Puzzle2Props {
   onSolve: (evidenceValue: string) => void;
@@ -11,21 +11,21 @@ interface Puzzle2Props {
 interface GridItem {
   id: string;
   label: string;
-  icon: React.ReactNode;
+  icon: string;
   display: string;
 }
 
 const Puzzle2GridDecipher = ({ onSolve, onError }: Puzzle2Props) => {
   const gridItems: GridItem[] = [
-    { id: "qh", label: "Quốc hội", icon: <Users className="w-8 h-8" />, display: "QH" },
-    { id: "cp", label: "Chính phủ", icon: <Building2 className="w-8 h-8" />, display: "CP" },
-    { id: "ta", label: "Tòa án", icon: <Scale className="w-8 h-8" />, display: "TA" },
-    { id: "vks", label: "Viện kiểm sát", icon: <ShieldAlert className="w-8 h-8" />, display: "VKS" },
-    { id: "useless1", label: "Decoy 1", icon: <Users className="w-8 h-8" />, display: "?" },
-    { id: "useless2", label: "Decoy 2", icon: <Building2 className="w-8 h-8" />, display: "?" },
-    { id: "useless3", label: "Decoy 3", icon: <Scale className="w-8 h-8" />, display: "?" },
-    { id: "useless4", label: "Decoy 4", icon: <ShieldAlert className="w-8 h-8" />, display: "?" },
-    { id: "useless5", label: "Decoy 5", icon: <Users className="w-8 h-8" />, display: "?" },
+    { id: "qh", label: "Quốc hội", icon: "Quốc Hội", display: "QH" },
+    { id: "dang", label: "Đảng", icon: "Đảng", display: "?" },
+    { id: "nhandan", label: "Nhân dân", icon: "Nhân Dân", display: "?" },
+    { id: "hienphap", label: "Hiến pháp", icon: "Hiến Pháp", display: "?" },
+    { id: "phapluat", label: "Pháp luật", icon: "Pháp Luật", display: "?" },
+    { id: "ta", label: "Tòa án", icon: "Tòa Án", display: "TA" },
+    { id: "cp", label: "Chính phủ", icon: "Chính Phủ", display: "CP" },
+    { id: "bomay", label: "Bộ máy nhà nước", icon: "Bộ Máy Nhà Nước", display: "?" },
+    { id: "vks", label: "Viện kiểm sát", icon: "Viện Kiểm Sát", display: "VKS" },
   ];
 
   const correctSequence = ["qh", "cp", "ta"];
@@ -92,26 +92,29 @@ const Puzzle2GridDecipher = ({ onSolve, onError }: Puzzle2Props) => {
       {/* Header */}
       <div className="text-center space-y-2">
         <Lock className="w-8 h-8 text-terminal-green mx-auto animate-pulse" />
-        <h2 className="text-2xl font-bold terminal-glow">THE GRID DECIPHER</h2>
-        <p className="text-terminal-green/60 text-sm">
-          &gt; Puzzle 2: Slides 4-7 - Power Structure
-        </p>
+          <h2 className="text-2xl font-bold terminal-glow">GIẢI MÃ LƯỚI</h2>
+          <p className="text-terminal-green/60 text-sm">
+            &gt; Bài 2: Slide 4-7 - Cơ chế vận hành quyền lực
+          </p>
       </div>
 
       {/* Instructions - Minimal Detail */}
       <div className="bg-terminal-black border border-terminal-green/30 p-4 rounded-none space-y-2">
         <p className="text-terminal-amber text-sm leading-relaxed">
-          &gt; Click the icons in the correct operational sequence.
+          &gt; Trong bài thuyết trình, ba cơ quan được nhắc đến khi giải thích cách quyền lực nhà nước vận hành:
         </p>
-        <p className="text-terminal-green text-xs">
-          Three elements must be activated in the proper power flow order from the briefing.
+        <p className="text-terminal-amber text-sm">&nbsp;• Một cơ quan ban hành luật</p>
+        <p className="text-terminal-amber text-sm">&nbsp;• Một cơ quan tổ chức thực hiện luật</p>
+        <p className="text-terminal-amber text-sm">&nbsp;• Một cơ quan đảm bảo luật được thi hành đúng</p>
+        <p className="text-terminal-green text-xs mt-2">
+          Hãy chọn đúng ba cơ quan theo thứ tự mà bài thuyết trình đã mô tả.
         </p>
       </div>
 
       {/* Progress */}
       {clickedSequence.length > 0 && (
         <div className="text-center space-y-2">
-          <p className="text-terminal-green text-sm">Progress: {clickedSequence.length}/3</p>
+          <p className="text-terminal-green text-sm">Tiến độ: {clickedSequence.length}/3</p>
           <div className="flex justify-center gap-2">
             {clickedSequence.map((id, i) => (
               <div
@@ -146,7 +149,7 @@ const Puzzle2GridDecipher = ({ onSolve, onError }: Puzzle2Props) => {
                     : "border-terminal-green/30 bg-terminal-black text-terminal-green hover:border-terminal-green/50"
               }`}
             >
-              <div>{item.icon}</div>
+              <div className="text-xl font-bold">{item.icon}</div>
               {isSelected && (
                 <span className="text-xs font-bold text-terminal-amber">
                   {clickedSequence.indexOf(item.id) + 1}
@@ -164,13 +167,13 @@ const Puzzle2GridDecipher = ({ onSolve, onError }: Puzzle2Props) => {
           animate={{ opacity: 1 }}
           className="text-center text-terminal-amber text-sm font-bold animate-flicker"
         >
-          ✗ SEQUENCE BROKEN × {attempts} | GRID RESET
+          ✗ TRÌNH TỰ SAI × {attempts} | LƯỚI ĐƯỢC ĐẶT LẠI
         </motion.p>
       )}
 
       {/* Instructions */}
       <p className="text-center text-terminal-green/60 text-xs">
-        [Click icons in correct order: Legislative → Executive → Judicial]
+        [Chọn theo thứ tự: Lập pháp → Hành pháp → Tư pháp]
       </p>
     </div>
   );

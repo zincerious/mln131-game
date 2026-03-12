@@ -10,9 +10,7 @@ const ProgressBar = ({ unlockedCount, totalCount }: ProgressBarProps) => {
     <div className="crt-frame p-4 md:p-6">
       <div className="space-y-3">
         <div className="flex justify-between items-center">
-          <p className="text-terminal-green font-bold text-sm">
-            &gt; EVIDENCE COLLECTED:
-          </p>
+          <p className="text-terminal-green font-bold text-sm">&gt; BẰNG CHỨNG ĐÃ THU:</p>
           <p className="text-terminal-amber font-bold text-sm">
             {unlockedCount}/{totalCount}
           </p>
